@@ -41,6 +41,10 @@ public class Ejemplar {
         this.libro = libro;
         this.estado = estado;
     }
+    public Ejemplar(Libro libro) {
+        this.libro = libro;
+        this.estado = "Disponible";
+    }
 
     public Integer getId() {
         return id;

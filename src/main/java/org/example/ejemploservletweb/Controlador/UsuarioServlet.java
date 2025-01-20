@@ -26,7 +26,7 @@ public class UsuarioServlet extends HttpServlet {
         daoUsuario = new DAOUsuario();
         conversorJson = new ObjectMapper();
     }
-    
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -50,12 +50,12 @@ public class UsuarioServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         conversorJson.registerModule(new JavaTimeModule());
 
-        String operacion = request.getParameter("operacion");
-        String dni = request.getParameter("dni");
-        String nombre = request.getParameter("nombre");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String tipo = request.getParameter("tipo");
+            String operacion = request.getParameter("operacion");
+            String dni = request.getParameter("dni");
+            String nombre = request.getParameter("nombre");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String tipo = request.getParameter("tipo");
         /*LocalDate penalizacionHasta = null;*/ //ACUERDATE DE MIRAR ESTO
 
         switch (operacion) {
