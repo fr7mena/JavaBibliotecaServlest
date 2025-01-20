@@ -55,6 +55,16 @@ public class Usuario {
         this.password=password;
         this.tipo=tipo;
         this.penalizacionHasta=penalizacionHasta;
+//        this.prestamos = new ArrayList<>();
+    }
+
+    public Usuario(String dni, String nombre, String email, String password, String tipo) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.tipo = tipo;
+//        this.prestamos = new ArrayList<>();
     }
 
     public Integer getId() {
@@ -109,16 +119,17 @@ public class Usuario {
         return penalizacionHasta;
     }
 
-    public int getPrestamosActivos(){
-        int contador=0;
+ /*   public int getPrestamosActivos() {
+        int contador = 0;
         LocalDate fecha_actual = LocalDate.now();
-        for(int i=0;i<this.prestamos.size();i++){
-            if(prestamos.get(i).getFechaDevolucion().isAfter(fecha_actual)){
+
+        for (Prestamo prestamo : this.prestamos) {
+            if (prestamo.getFechaDevolucion() != null && prestamo.getFechaDevolucion().isAfter(fecha_actual)) {
                 contador++;
             }
         }
         return contador;
-    }
+    }*/
 
     public void setPenalizacionHasta(LocalDate penalizacionHasta) {
         this.penalizacionHasta = penalizacionHasta;

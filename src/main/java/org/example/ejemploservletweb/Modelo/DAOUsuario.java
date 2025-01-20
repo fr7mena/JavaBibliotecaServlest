@@ -13,24 +13,13 @@ public class DAOUsuario {
     }
 
     //INSERT
-    public boolean addUsuario(Usuario usuario){
+        public boolean addUsuario(Usuario usuario){
         tx.begin();
         em.persist(usuario);
         tx.commit();
         return false;
     }
 
-    //SELECT WHERE ID
-    public Usuario getUsuarioById(int id){
-        return em.find(Usuario.class, id);
-    }
-
-    //SELECT WHERE DNI
-    public Usuario getUsuarioByDni(String dni){
-        Query consulta = em.createQuery("SELECT u from Usuario u WHERE u.dni=:dni");
-        consulta.setParameter("dni",dni);
-        return (Usuario) consulta.getSingleResult();
-    }
     //SELECT *
     public List<Usuario> getAllUsuarios(){
         return em.createQuery("SELECT u FROM Usuario u").getResultList();
@@ -49,6 +38,29 @@ public class DAOUsuario {
         em.remove(usuario);
         tx.commit();
         return true;
+    }
+
+    public Usuario getUsuarioByEmail(String email) { //HE PUESTO ESTE DEL MÍO DEBERÍA FUNCIONAR
+        Usuario usuario = null;
+        String sql = "SELECT * FROM usuario WHERE email = ?";
+        Query query = em.createNativeQuery(sql, Usuario.class);
+        query.setParameter(1, email);
+        try {
+            usuario = (Usuario) query.getSingleResult();
+            return usuario;
+        } catch (NoResultException e) {
+            return usuario;
+        }
+    }
+
+    public Usuario getUsuarioById(int id){
+        return em.find(Usuario.class, id);
+    }
+
+    public Usuario getUsuarioByDni(String dni){
+        Query consulta = em.createQuery("SELECT u from Usuario u WHERE u.dni=:dni");
+        consulta.setParameter("dni",dni);
+        return (Usuario) consulta.getSingleResult();
     }
 
 }
